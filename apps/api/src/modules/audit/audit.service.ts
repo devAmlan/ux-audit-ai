@@ -1,8 +1,11 @@
 import { AuditStatus } from "@prisma/client";
 import { prisma } from "../../lib/prisma";
 import { CreateAuditInput, AuditResponse } from "./audit.types";
+import { JobService } from "../job";
 
 const ANONYMOUS_USER_ID = "anonymous";
+
+const jobService = new JobService();
 
 export class AuditService {
   async createAudit(input: CreateAuditInput): Promise<AuditResponse> {
@@ -29,6 +32,9 @@ export class AuditService {
         status: AuditStatus.PENDING,
       },
     });
+
+    // Enqueue job for background processing
+    await jobService.enqueueAuditJob(audit.id);
 
     return audit;
   }

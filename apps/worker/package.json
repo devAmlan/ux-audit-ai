@@ -1,7 +1,7 @@
 {
-  "name": "api",
+  "name": "worker",
   "version": "1.0.0",
-  "description": "",
+  "description": "Background job worker for audit processing",
   "main": "dist/index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
@@ -13,27 +13,18 @@
   "license": "ISC",
   "packageManager": "pnpm@10.20.0",
   "dependencies": {
+    "@repo/db": "workspace:*",
     "@prisma/adapter-pg": "^7.2.0",
     "@prisma/client": "^7.2.0",
-    "@repo/db": "workspace:*",
-    "@types/cors": "^2.8.19",
     "bullmq": "^5.66.5",
-    "chrome-launcher": "^1.2.1",
-    "cors": "^2.8.5",
     "dotenv": "^17.2.3",
-    "express": "^5.2.1",
     "ioredis": "^5.9.2",
-    "lighthouse": "^13.0.1",
-    "pg": "^8.16.3",
-    "playwright": "^1.57.0"
+    "playwright": "^1.57.0",
+    "pg": "^8.16.3"
   },
   "devDependencies": {
-    "@types/express": "^5.0.6",
     "@types/node": "^24.10.7",
     "@types/pg": "^8.16.0",
-    "nodemon": "^3.1.11",
-    "prisma": "^7.2.0",
-    "ts-node": "^10.9.2",
     "tsx": "^4.21.0",
     "typescript": "~5.9.3"
   }
